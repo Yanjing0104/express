@@ -1,7 +1,7 @@
 // var mysql=require('mysql');
 //本地
 // let connection=mysql.createConnection({
-//     hoot:'localhost',
+//     host:'localhost',
 //     user:'root',
 //     password:'123456',
 //     database:'myproject',
@@ -11,9 +11,9 @@
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : '47.99.215.121',
-  user     : 'root',
+  user     : 'myproject',
   password : 'yj19950104',
-  database : 'myproject'
+  database : 'myproject',
 });
 
 connection.connect();
