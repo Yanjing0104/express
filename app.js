@@ -3,7 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var https = require('https');
 
 
 var indexRouter = require('./routes/index');
@@ -11,6 +10,7 @@ var usersRouter = require('./routes/shop');
 var admin = require('./routes/admin');
 var shop = require('./routes/shop');
 var user = require('./routes/user');
+var blog = require('./routes/blog');
 var multer=require('multer')
 var upload=multer({dest:'uploads/'})
 var fs=require('fs')
@@ -18,12 +18,6 @@ var fs=require('fs')
 
 var app = express();
 
-//同步读取密钥和签名证书
-var options = {
-    key:fs.readFileSync('./keys/1612355_www.pc9527.vip.key','utf8'),
-    cert:fs.readFileSync('./keys/1612355_www.pc9527.vip.pem','utf8')
-}
-var httpsServer = https.createServer(options,app).listen(3001);
 //设置跨域访问
 app.all('*',function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -43,10 +37,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/admin', admin);
-app.use('/shop', shop);
-app.use('/user',user)
+app.use('/blog', blog);
+// app.use('/users', usersRouter);
+// app.use('/admin', admin);
+// app.use('/shop', shop);
+// app.use('/user',user)
 
 
 

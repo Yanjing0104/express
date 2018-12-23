@@ -23,16 +23,6 @@ router.post('/submit',function (req,res) {
             res.send('fail')
         }
     })
-    // var {username,password} = req.body;
-    // console.log(username);
-    // console.log(password);
-    // connection.query('select * from manage where username = ? and password = ?',[username,password],function (err,result) {
-    //     if (result.length > 0){
-    //         res.send('success')
-    //     } else {
-    //         res.send('fail')
-    //     }
-    // })
 })
 
 module.exports = router
